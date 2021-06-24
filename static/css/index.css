@@ -8,15 +8,15 @@ html {
 	scroll-behavior: smooth;
 }
 
-:root {
-	font-size: 10px;
-}
-
 body {
 	font-family: 'Inter', sans-serif;
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
+}
+
+:root {
+	font-size: 8px;
 }
 
 @media screen and (min-width: 768px) {

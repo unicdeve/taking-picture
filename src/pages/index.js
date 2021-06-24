@@ -5,10 +5,15 @@ import { StyledHome } from '../components/styled/home.styled';
 
 const IndexPage = () => {
 	return (
-		<PageLayout>
-			<StyledHome>
-				<p>Home page</p>
-			</StyledHome>
+		<PageLayout
+			subTopic={
+				<>
+					Take a passport sized photo using your own device and have it printed
+					at <span>any</span> printicular booth.
+				</>
+			}
+		>
+			<StyledHome></StyledHome>
 		</PageLayout>
 	);
 };
