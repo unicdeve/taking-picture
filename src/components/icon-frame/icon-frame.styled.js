@@ -18,8 +18,8 @@ export const StyledIconFrame = styled.div`
 		background-image: url('/images/square-frame.svg');
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
-		width: 125px;
-		height: 125px;
+		width: 153px;
+		height: 153px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
