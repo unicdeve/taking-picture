@@ -3,27 +3,43 @@ import styled from 'styled-components';
 export const Container = styled.div`
 	width: 100%;
 
-	.icons {
+	.content {
 		display: none;
 
-		.arrow {
-			margin: auto 1rem;
+		.wrapper {
+			.arrow {
+				margin: auto 1rem;
+			}
+		}
+
+		.btn {
+			margin-top: 3.5rem;
 		}
 	}
 
 	@media (min-width: 768px) {
-		.icons {
+		.content {
 			display: flex;
-			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+
+			.wrapper {
+				display: flex;
+				justify-content: center;
+			}
 		}
 	}
 `;
 
-export const MBWrapper = styled.div`
+export const MBContent = styled.div`
 	margin-top: 6rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
+	.btn {
+		margin-top: 3.5rem;
+	}
 
 	.steps {
 		margin-bottom: 8rem;
