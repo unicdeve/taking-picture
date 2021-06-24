@@ -19,6 +19,7 @@ export const StyledLayout = styled.main`
 		}
 
 		p {
+			font-style: ${({ isMobile }) => (isMobile ? 'normal' : 'italic')};
 			span {
 				font-weight: 600;
 			}
