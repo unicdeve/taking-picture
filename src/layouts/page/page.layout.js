@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../static/css/index.css';
+import '../../../static/css/index.css';
 
 import { StyledLayout } from './page.styled';
 
