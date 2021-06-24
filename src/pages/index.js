@@ -1,12 +1,15 @@
 import React from 'react';
 
+import PageLayout from '../layouts/page.layout';
+import { StyledHome } from '../components/styled/home.styled';
+
 const IndexPage = () => {
 	return (
-		<main>
-			<title>Home Page</title>
-
-			<p>Home page</p>
-		</main>
+		<PageLayout>
+			<StyledHome>
+				<p>Home page</p>
+			</StyledHome>
+		</PageLayout>
 	);
 };
 
