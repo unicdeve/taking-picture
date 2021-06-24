@@ -8,10 +8,17 @@ export default function HomeContent() {
 	return (
 		<Container>
 			<div className='icons'>
-				{homeData.map(({ id, icon }) => {
+				{homeData.map(({ id, icon, title }) => {
 					return (
 						<>
-							<IconFrame key={id} icon={icon} />
+							<IconFrame key={id} icon={icon} title={title} />
+							{id < 3 && (
+								<img
+									className='arrow'
+									src='/images/icons/right-arrow.svg'
+									alt=''
+								/>
+							)}
 						</>
 					);
 				})}

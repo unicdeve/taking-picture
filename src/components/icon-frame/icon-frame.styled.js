@@ -10,6 +10,10 @@ export const StyledIconFrame = styled.div`
 	justify-content: center;
 	align-items: center;
 
+	span {
+		margin-top: 1rem;
+	}
+
 	.icon-container {
 		background-image: url('/images/square-frame.svg');
 		background-size: 100% 100%;

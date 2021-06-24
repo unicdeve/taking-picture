@@ -6,5 +6,9 @@ export const Container = styled.div`
 	.icons {
 		display: flex;
 		justify-content: center;
+
+		.arrow {
+			margin: auto 1rem;
+		}
 	}
 `;
