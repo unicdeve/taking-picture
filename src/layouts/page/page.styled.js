@@ -6,7 +6,7 @@ export const StyledLayout = styled.main`
 	background-image: url('/images/bg.png');
 	background-size: cover;
 	display: flex;
-	flex-direction: column;
+	flex-flow: column;
 
 	header {
 		margin-top: 3rem;
@@ -43,5 +43,24 @@ export const StyledLayout = styled.main`
 				text-transform: uppercase;
 			}
 		}
+	}
+`;
+
+export const ChildContainer = styled.div`
+	flex: 1;
+	background: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	box-shadow: 0px 0px 171px -51px rgba(0, 0, 0, 0.25);
+	border-radius: 100px 100px 0px 0px;
+	margin-top: 2rem;
+
+	@media (min-width: 768px) {
+		align-items: center;
+		background: unset;
+		box-shadow: unset;
+		border-radius: unset;
+		margin-top: unset;
 	}
 `;

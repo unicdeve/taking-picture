@@ -2,6 +2,7 @@ import React from 'react';
 
 import PageLayout from '../layouts/page/page.layout';
 import { StyledHome } from '../components/styled/home.styled';
+import HomeContent from '../components/home-content/home-content.comp';
 
 const IndexPage = () => {
 	return (
@@ -13,7 +14,9 @@ const IndexPage = () => {
 				</>
 			}
 		>
-			<StyledHome></StyledHome>
+			<StyledHome>
+				<HomeContent />
+			</StyledHome>
 		</PageLayout>
 	);
 };

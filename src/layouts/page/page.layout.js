@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../../../static/css/index.css';
 
-import { StyledLayout } from './page.styled';
+import { StyledLayout, ChildContainer } from './page.styled';
 
 export default function PageLayout({ title, subTopic, children }) {
 	return (
@@ -15,7 +15,7 @@ export default function PageLayout({ title, subTopic, children }) {
 				{subTopic && <p>{subTopic}</p>}
 			</header>
 
-			{children}
+			<ChildContainer>{children}</ChildContainer>
 		</StyledLayout>
 	);
 }
