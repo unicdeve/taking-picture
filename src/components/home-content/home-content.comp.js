@@ -36,7 +36,7 @@ export default function HomeContent() {
 				</div>
 
 				<Button
-					to='/'
+					to='/get-started'
 					text='Get Started'
 					variant='outline'
 					size='lg'
@@ -63,7 +63,7 @@ export default function HomeContent() {
 
 				{current === 2 && (
 					<Button
-						to='/'
+						to='/get-started'
 						text='Get Started'
 						variant='solid'
 						size='lg'
