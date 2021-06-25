@@ -3,10 +3,13 @@ import { navigate } from 'gatsby';
 
 import { Container, MBContent } from './image-preview-content.styled';
 import Button from '../button/button.comp';
+import PhoneCamera from '../phone-camera/phone-camera.comp';
 import { useData } from '../../context/data';
+import { useCamera } from '../../utils/hooks/use-camera';
 
 export default function ImagePreviewContent() {
 	const { state } = useData();
+	const { camRef, takePicture } = useCamera();
 
 	useEffect(() => {
 		if (!state.imagePreview) navigate('/get-started');
@@ -19,7 +22,6 @@ export default function ImagePreviewContent() {
 					<img src={state.imagePreview} alt='' />
 				</div>
 			</div>
-
 			<div className='desktop'>
 				<Button
 					// to='/get-started'
@@ -29,7 +31,6 @@ export default function ImagePreviewContent() {
 					className='btn'
 				/>
 			</div>
-
 			<MBContent>
 				<Button
 					// to='/get-started'
@@ -45,8 +46,10 @@ export default function ImagePreviewContent() {
 					variant='noBg'
 					size='lg'
 					className='no-bg-btn'
+					onClick={takePicture}
 				/>
 			</MBContent>
+			<PhoneCamera camRef={camRef} />;
 		</Container>
 	);
 }

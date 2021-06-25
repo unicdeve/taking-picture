@@ -1,28 +1,16 @@
-import React, { useRef } from 'react';
-import { navigate } from 'gatsby';
+import React from 'react';
 
 import { Container } from './get-started-content.styled';
 import Button from '../button/button.comp';
+import PhoneCamera from '../phone-camera/phone-camera.comp';
 import IconFrame from '../icon-frame/icon-frame.comp';
-import { useIsMobile } from '../../utils/hooks/is-mobile';
+import { useIsMobile } from '../../utils/hooks/use-is-mobile';
 import { list } from '../../mock-ups/get-started.data';
-import { useData } from '../../context/data';
+import { useCamera } from '../../utils/hooks/use-camera';
 
 export default function GetStartedContent() {
 	const isMobile = useIsMobile();
-	const inputRef = useRef();
-
-	const { updateFile } = useData();
-
-	const handleChange = (e) => {
-		updateFile(e.target.files[0], () => {
-			navigate('/image-preview');
-		});
-	};
-
-	const takePicture = () => {
-		inputRef.current.click();
-	};
+	const { camRef, takePicture } = useCamera();
 
 	return (
 		<Container>
@@ -49,16 +37,7 @@ export default function GetStartedContent() {
 			</div>
 
 			{/* For moble camera */}
-			<input
-				ref={inputRef}
-				type='file'
-				accept='image/*'
-				capture
-				onChange={handleChange}
-				style={{
-					display: 'none',
-				}}
-			/>
+			<PhoneCamera camRef={camRef} />
 
 			<Button
 				text='Take A Photo'

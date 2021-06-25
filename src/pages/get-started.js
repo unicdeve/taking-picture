@@ -2,7 +2,7 @@ import React from 'react';
 
 import PageLayout from '../layouts/page/page.layout';
 import GetStartedContent from '../components/get-started-content/get-started-content.comp';
-import { useIsMobile } from '../utils/hooks/is-mobile';
+import { useIsMobile } from '../utils/hooks/use-is-mobile';
 
 const IndexPage = () => {
 	const isMobile = useIsMobile();

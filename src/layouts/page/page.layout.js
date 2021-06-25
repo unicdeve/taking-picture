@@ -1,7 +1,7 @@
 import React from 'react';
 
 import '../../../static/css/index.css';
-import { useIsMobile } from '../../utils/hooks/is-mobile';
+import { useIsMobile } from '../../utils/hooks/use-is-mobile';
 
 import { StyledLayout, ChildContainer } from './page.styled';
 
