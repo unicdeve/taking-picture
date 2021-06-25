@@ -2,6 +2,7 @@ import dataTypes from './types';
 
 export const dataInitialState = {
 	file: null,
+	imagePreview: null,
 };
 
 export default function dataReducer(state = dataInitialState, action) {
@@ -9,7 +10,8 @@ export default function dataReducer(state = dataInitialState, action) {
 		case dataTypes.FILE_INPUT:
 			return {
 				...state,
-				file: action.payload,
+				file: action.payload.file,
+				imagePreview: action.payload.imagePreview,
 			};
 
 		default:

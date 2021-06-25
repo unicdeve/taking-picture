@@ -10,9 +10,7 @@ export const useIsMobile = () => {
 	useEffect(() => {
 		window.addEventListener('resize', onWindowResize);
 
-		return () => {
-			onWindowResize();
-		};
+		return () => window.removeEventListener('resize', onWindowResize);
 	}, []);
 
 	return isMobile;
