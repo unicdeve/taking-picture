@@ -15,6 +15,11 @@ const solidStyles = css`
 	border-radius: 17px;
 `;
 
+const noBgStyles = css`
+	background: #fff;
+	color: #2b40ac;
+`;
+
 const lgStyles = css`
 	width: 269px;
 	height: 87px;
@@ -39,6 +44,9 @@ const getVariantStyles = ({ variant }) => {
 	switch (variant) {
 		case 'outline':
 			return outlineStyles;
+
+		case 'noBg':
+			return noBgStyles;
 
 		default:
 		case 'solid':

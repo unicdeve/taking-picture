@@ -33,6 +33,14 @@ export default function ImagePreviewContent() {
 					size='lg'
 					className='btn'
 				/>
+
+				<Button
+					// to='/get-started'
+					text='Retake Photo'
+					variant='noBg'
+					size='lg'
+					className='no-bg-btn'
+				/>
 			</MBContent>
 		</Container>
 	);

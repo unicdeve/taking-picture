@@ -70,6 +70,10 @@ export const MBContent = styled.div`
 		margin-top: 5.5rem;
 	}
 
+	.no-bg-btn {
+		margin-top: 1.5rem;
+	}
+
 	@media (min-width: 768px) {
 		display: none;
 	}
