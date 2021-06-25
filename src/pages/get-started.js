@@ -9,6 +9,7 @@ const IndexPage = () => {
 
 	return (
 		<PageLayout
+			title='Get started'
 			subTopic={
 				isMobile
 					? 'Guided Face Placement'

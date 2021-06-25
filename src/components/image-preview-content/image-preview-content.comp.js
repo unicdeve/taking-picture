@@ -29,6 +29,7 @@ export default function ImagePreviewContent() {
 					variant='outline'
 					size='lg'
 					className='btn'
+					onClick={() => navigate('/image')}
 				/>
 			</div>
 			<MBContent>
@@ -38,6 +39,7 @@ export default function ImagePreviewContent() {
 					variant='solid'
 					size='lg'
 					className='btn'
+					onClick={() => navigate('/image')}
 				/>
 
 				<Button

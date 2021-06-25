@@ -20,6 +20,13 @@ const noBgStyles = css`
 	color: #2b40ac;
 `;
 
+const outlineBorder = css`
+	background: transparent;
+	color: #fff;
+	border: 1px solid #fff;
+	border-radius: 17px;
+`;
+
 const lgStyles = css`
 	width: 269px;
 	height: 87px;
@@ -47,6 +54,9 @@ const getVariantStyles = ({ variant }) => {
 
 		case 'noBg':
 			return noBgStyles;
+
+		case 'outlineBorder':
+			return outlineBorder;
 
 		default:
 		case 'solid':
