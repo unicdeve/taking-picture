@@ -6,8 +6,9 @@ export const dataInitialState = {
 };
 
 export default function dataReducer(state = dataInitialState, action) {
+	console.log(action.payload);
 	switch (action.type) {
-		case dataTypes.FILE_INPUT:
+		case dataTypes.UPDATE_FILE:
 			return {
 				...state,
 				file: action.payload.file,

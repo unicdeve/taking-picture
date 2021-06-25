@@ -15,9 +15,14 @@ function DataProvider(props) {
 	const [state, dispatch] = useReducer(dataReducer, dataInitialState);
 
 	const updateFile = useCallback((file, cb) => {
+		const imagePreview = URL.createObjectURL(file);
+
 		dispatch({
 			type: dataTypes.UPDATE_FILE,
-			payload: file,
+			payload: {
+				file,
+				imagePreview,
+			},
 		});
 
 		cb && cb();

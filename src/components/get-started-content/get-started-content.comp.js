@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { navigate } from 'gatsby';
 
 import { Container } from './get-started-content.styled';
 import Button from '../button/button.comp';
@@ -15,7 +16,7 @@ export default function GetStartedContent() {
 
 	const handleChange = (e) => {
 		updateFile(e.target.files[0], () => {
-			// TODO navigate to the next screen
+			navigate('/image-preview');
 		});
 	};
 
