@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { navigate } from 'gatsby';
 
 import { Container, MBContent } from './image-preview-content.styled';
 import Button from '../button/button.comp';
@@ -6,6 +7,10 @@ import { useData } from '../../context/data';
 
 export default function ImagePreviewContent() {
 	const { state } = useData();
+
+	useEffect(() => {
+		if (!state.imagePreview) navigate('/get-started');
+	}, [state.imagePreview]);
 
 	return (
 		<Container>
