@@ -9,7 +9,7 @@ export default function dataReducer(state = dataInitialState, action) {
 		case dataTypes.FILE_INPUT:
 			return {
 				...state,
-				file: action.payload.file,
+				file: action.payload,
 			};
 
 		default:

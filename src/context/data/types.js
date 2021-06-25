@@ -1,5 +1,5 @@
 const dataTypes = {
-	FILE_INPUT: 'FILE_INPUT',
+	UPDATE_FILE: 'UPDATE_FILE',
 };
 
 export default dataTypes;

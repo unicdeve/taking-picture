@@ -1,6 +1,12 @@
-import React, { useReducer, createContext, useMemo, useContext } from 'react';
+import React, {
+	useReducer,
+	createContext,
+	useMemo,
+	useContext,
+	useCallback,
+} from 'react';
 import dataReducer, { dataInitialState } from './reducer';
-// import dataTypes from './types';
+import dataTypes from './types';
 
 // Context
 const DataContext = createContext();
@@ -8,11 +14,21 @@ const DataContext = createContext();
 function DataProvider(props) {
 	const [state, dispatch] = useReducer(dataReducer, dataInitialState);
 
+	const updateFile = useCallback((file, cb) => {
+		dispatch({
+			type: dataTypes.UPDATE_FILE,
+			payload: file,
+		});
+
+		cb && cb();
+	}, []);
+
 	const value = useMemo(() => {
 		return {
 			state,
+			updateFile,
 		};
-	}, [state]);
+	}, [state, updateFile]);
 
 	return <DataContext.Provider value={value} {...props} />;
 }

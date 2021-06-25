@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { Container } from './get-started-content.styled';
 import Button from '../button/button.comp';
 import IconFrame from '../icon-frame/icon-frame.comp';
 import { useIsMobile } from '../../utils/hooks/is-mobile';
 import { list } from '../../mock-ups/get-started.data';
+import { useData } from '../../context/data';
 
 export default function GetStartedContent() {
 	const isMobile = useIsMobile();
+	const inputRef = useRef();
+
+	const { updateFile } = useData();
+
+	const handleChange = (e) => {
+		updateFile(e.target.files[0], () => {
+			// TODO navigate to the next screen
+		});
+	};
+
+	const takePicture = () => {
+		inputRef.current.click();
+	};
 
 	return (
 		<Container>
@@ -33,11 +47,24 @@ export default function GetStartedContent() {
 				</div>
 			</div>
 
+			{/* For moble camera */}
+			<input
+				ref={inputRef}
+				type='file'
+				accept='image/*'
+				capture
+				onChange={handleChange}
+				style={{
+					display: 'none',
+				}}
+			/>
+
 			<Button
 				text='Take A Photo'
 				variant={isMobile ? 'solid' : 'outline'}
 				size='lg'
 				className='btn'
+				onClick={takePicture}
 			/>
 		</Container>
 	);
