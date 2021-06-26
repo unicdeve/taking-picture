@@ -49,7 +49,7 @@ export const Container = styled.div`
 
 	@media (min-width: 768px) {
 		.btn {
-			margin-top: unset;
+			margin-top: 2rem;
 		}
 
 		.content {

@@ -19,14 +19,24 @@ export default function GetStartedContent() {
 
 				<div className='wrapper'>
 					<ul>
-						{list.map((l) => (
-							<li key={l.id}>{l.text}</li>
+						{list.map((l, i) => (
+							<li
+								key={l.id}
+								style={{ margin: i === list.length - 1 ? '0' : '0 0 3rem 0' }}
+							>
+								{l.text}
+							</li>
 						))}
 					</ul>
 
 					<ol>
-						{list.map((l) => (
-							<li key={l.id}>{l.text}</li>
+						{list.map((l, i) => (
+							<li
+								key={l.id}
+								style={{ margin: i === list.length - 1 ? '0' : '0 0 3rem 0' }}
+							>
+								{l.text}
+							</li>
 						))}
 					</ol>
 

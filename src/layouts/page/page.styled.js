@@ -16,6 +16,8 @@ export const StyledLayout = styled.main`
 		h1 {
 			font-size: 3rem;
 			text-transform: capitalize;
+			margin-block-start: 0;
+			margin-block-end: 0;
 		}
 
 		p {
