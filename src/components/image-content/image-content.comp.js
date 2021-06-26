@@ -65,13 +65,24 @@ export default function ImageContent() {
 			<div className='desktop'>
 				<Button text='Retake Photo' variant='outlineBorder' size='lg' />
 
-				<Button text='Next' variant='outline' size='lg' className='btn' />
+				<Button
+					text='Next'
+					variant='outline'
+					size='lg'
+					className='btn'
+					onClick={() => navigate('/final')}
+				/>
 			</div>
 			<MBContent>
-				<Button text='Next' variant='solid' size='lg' className='btn' />
+				<Button
+					text='Next'
+					variant='solid'
+					size='lg'
+					className='btn'
+					onClick={() => navigate('/final')}
+				/>
 
 				<Button
-					// to='/get-started'
 					text='Retake Photo'
 					variant='noBg'
 					size='lg'

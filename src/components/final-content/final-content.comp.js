@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { navigate } from 'gatsby';
 
-import { Container, MBContent } from './image-preview-content.styled';
+import { Container, MBContent, StyledGeneral } from './final-content.styled';
 import Button from '../button/button.comp';
 import PhoneCamera from '../phone-camera/phone-camera.comp';
 import { useData } from '../../context/data';
 import { useCamera } from '../../utils/hooks/use-camera';
 
-export default function ImagePreviewContent() {
+export default function FinalContent() {
 	const { state } = useData();
 	const { camRef, takePicture } = useCamera();
 
@@ -17,30 +17,21 @@ export default function ImagePreviewContent() {
 
 	return (
 		<Container>
-			<div className='general'>
+			<StyledGeneral>
 				<div className='image-preview'>
 					<img src={state.imagePreview} alt='' />
 				</div>
-			</div>
+			</StyledGeneral>
 			<div className='desktop'>
-				<Button
-					text='Next'
-					variant='outline'
-					size='lg'
-					className='btn'
-					onClick={() => navigate('/image')}
-				/>
+				<Button text='Retake Photo' variant='outlineBorder' size='lg' />
+
+				<Button text='Next' variant='outline' size='lg' className='btn' />
 			</div>
 			<MBContent>
-				<Button
-					text='Next'
-					variant='solid'
-					size='lg'
-					className='btn'
-					onClick={() => navigate('/image')}
-				/>
+				<Button text='Next' variant='solid' size='lg' className='btn' />
 
 				<Button
+					// to='/get-started'
 					text='Retake Photo'
 					variant='noBg'
 					size='lg'
