@@ -12,6 +12,8 @@ import Button from '../button/button.comp';
 import PhoneCamera from '../phone-camera/phone-camera.comp';
 import { useData } from '../../context/data';
 import { useCamera } from '../../utils/hooks/use-camera';
+import { imageData } from '../../mock-ups/image.data';
+import { useImageAction } from '../../utils/hooks/use-image';
 
 export default function ImageContent() {
 	const { state } = useData();
@@ -20,6 +22,8 @@ export default function ImageContent() {
 	useEffect(() => {
 		if (!state.imagePreview) navigate('/get-started');
 	}, [state.imagePreview]);
+
+	const { values, handleClick } = useImageAction();
 
 	return (
 		<Container>
@@ -36,56 +40,26 @@ export default function ImageContent() {
 						</div>
 					</div>
 
-					<div className='action border'>
-						<span className='label'>Did you remove any eyewear?</span>
+					{imageData.map(({ id, question, name }, i) => (
+						<div
+							key={id}
+							className={`action ${i < imageData.length - 1 ? 'border' : ''}`}
+						>
+							<span className='label'>{question}</span>
 
-						<div className='inputs'>
-							<StyledRadioInput className='left' />
-							<StyledRadioInput />
+							<div className='inputs'>
+								<StyledRadioInput
+									className='left'
+									onClick={() => handleClick(name, 'true')}
+									selected={values[name] === 'true'}
+								/>
+								<StyledRadioInput
+									onClick={() => handleClick(name, 'false')}
+									selected={values[name] === 'false'}
+								/>
+							</div>
 						</div>
-					</div>
-
-					<div className='action border'>
-						<span className='label'>
-							Is your face centered within the frame?
-						</span>
-
-						<div className='inputs'>
-							<StyledRadioInput className='left' />
-							<StyledRadioInput />
-						</div>
-					</div>
-
-					<div className='action border'>
-						<span className='label'>Are you against a white background?</span>
-
-						<div className='inputs'>
-							<StyledRadioInput className='left' />
-							<StyledRadioInput />
-						</div>
-					</div>
-
-					<div className='action border'>
-						<span className='label'>
-							Is your face clearly visible with no obscuring shadows or filters?
-						</span>
-
-						<div className='inputs'>
-							<StyledRadioInput className='left' />
-							<StyledRadioInput />
-						</div>
-					</div>
-
-					<div className='action'>
-						<span className='label'>
-							Do you have a neutral facial expression?
-						</span>
-
-						<div className='inputs'>
-							<StyledRadioInput className='left' />
-							<StyledRadioInput />
-						</div>
-					</div>
+					))}
 				</StyledActions>
 			</StyledGeneral>
 			<div className='desktop'>

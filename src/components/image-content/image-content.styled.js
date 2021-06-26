@@ -159,9 +159,9 @@ export const StyledActions = styled.div`
 		}
 	}
 
-	@media (min-width: 768px) {
+	@media (min-width: 1024px) {
 		.action {
-			font-size: 24px;
+			font-size: 20px;
 		}
 	}
 `;
@@ -169,7 +169,7 @@ export const StyledActions = styled.div`
 export const StyledRadioInput = styled.div`
 	width: 25px;
 	height: 25px;
-	background-color: #fff;
+	background-color: ${({ selected }) => (selected ? '#2B40AC' : '#fff')};
 	border: 1px solid #808080;
 	border-radius: 50%;
 
