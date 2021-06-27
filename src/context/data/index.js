@@ -63,26 +63,56 @@ function DataProvider(props) {
 	// console.log('image in mb', state);
 
 	const uploadImageMB = useCallback(async () => {
+		dispatch({
+			type: dataTypes.UPLOADING,
+			payload: true,
+		});
+
 		const base64 = await toBase64(state.file);
 
 		axios
 			.post(`${api_url}/api/image-upload`, { file: base64 })
 			.then((res) => {
-				console.log(res.data);
+				dispatch({
+					type: dataTypes.UPDATE_FILE,
+					payload: {
+						imagePreview: res.data.secure_url,
+						file: res.data.secure_url,
+					},
+				});
 			})
 			.catch((err) => {
 				console.error('Error uploading image', err);
+				dispatch({
+					type: dataTypes.UPLOADING,
+					payload: false,
+				});
 			});
 	}, [state.file]);
 
 	const uploadImage = useCallback(() => {
+		dispatch({
+			type: dataTypes.UPLOADING,
+			payload: true,
+		});
+
 		axios
 			.post(`${api_url}/api/image-upload`, { file: state.imagePreview })
 			.then((res) => {
-				console.log(res.data);
+				dispatch({
+					type: dataTypes.UPDATE_FILE,
+					payload: {
+						imagePreview: res.data.secure_url,
+						file: res.data.secure_url,
+					},
+				});
 			})
 			.catch((err) => {
 				console.error('Error uploading image', err);
+				dispatch({
+					type: dataTypes.UPLOADING,
+					payload: false,
+				});
 			});
 	}, [state.imagePreview]);
 

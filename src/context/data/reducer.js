@@ -3,6 +3,7 @@ import dataTypes from './types';
 export const dataInitialState = {
 	file: null,
 	imagePreview: null,
+	uploading: false,
 };
 
 export default function dataReducer(state = dataInitialState, action) {
@@ -12,6 +13,13 @@ export default function dataReducer(state = dataInitialState, action) {
 				...state,
 				file: action.payload.file,
 				imagePreview: action.payload.imagePreview,
+				uploading: false,
+			};
+
+		case dataTypes.UPLOADING:
+			return {
+				...state,
+				uploading: action.payload,
 			};
 
 		default:
