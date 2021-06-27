@@ -26,9 +26,7 @@ export default function ImagePreviewContent() {
 						<img src={state.imagePreview} alt='' />
 					</div>
 				) : (
-					// <div className='image-preview'>
 					<DesktopWebcam />
-					// </div>
 				)}
 			</div>
 

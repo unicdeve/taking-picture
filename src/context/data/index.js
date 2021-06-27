@@ -31,13 +31,21 @@ function DataProvider(props) {
 	}, []);
 
 	const capture = useCallback(() => {
-		console.log(webcamRef.current.getScreenshot());
-
 		dispatch({
 			type: dataTypes.UPDATE_FILE,
 			payload: {
 				file: webcamRef.current.getScreenshot(),
 				imagePreview: webcamRef.current.getScreenshot(),
+			},
+		});
+	}, []);
+
+	const retakeImage = useCallback(() => {
+		dispatch({
+			type: dataTypes.UPDATE_FILE,
+			payload: {
+				file: null,
+				imagePreview: null,
 			},
 		});
 	}, []);
@@ -48,8 +56,9 @@ function DataProvider(props) {
 			updateFile,
 			webcamRef,
 			capture,
+			retakeImage,
 		};
-	}, [state, updateFile, capture]);
+	}, [state, updateFile, capture, retakeImage]);
 
 	return (
 		<DataContext.Provider value={value} {...props}>

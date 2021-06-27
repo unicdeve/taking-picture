@@ -14,14 +14,17 @@ import { useData } from '../../context/data';
 import { useCamera } from '../../utils/hooks/use-camera';
 import { imageData } from '../../mock-ups/image.data';
 import { useImageAction } from '../../utils/hooks/use-image';
+import DesktopWebcam from '../desktop-webcam/desktop-webcam.comp';
+import { useIsMobile } from '../../utils/hooks/use-is-mobile';
 
 export default function ImageContent() {
-	const { state } = useData();
+	const { state, retakeImage, capture } = useData();
 	const { camRef, takePicture } = useCamera();
+	const isMobile = useIsMobile();
 
 	useEffect(() => {
-		if (!state.imagePreview) navigate('/get-started');
-	}, [state.imagePreview]);
+		if (!state.imagePreview && isMobile) navigate('/get-started');
+	}, [state.imagePreview, isMobile]);
 
 	const { values, handleClick } = useImageAction();
 
@@ -29,7 +32,13 @@ export default function ImageContent() {
 		<Container>
 			<StyledGeneral>
 				<div className='image-preview'>
-					<img src={state.imagePreview} alt='' />
+					{isMobile ? (
+						<div className='image-preview'>
+							<img src={state.imagePreview} alt='' />
+						</div>
+					) : (
+						<DesktopWebcam />
+					)}
 				</div>
 
 				<StyledActions>
@@ -63,7 +72,21 @@ export default function ImageContent() {
 				</StyledActions>
 			</StyledGeneral>
 			<div className='desktop'>
-				<Button text='Retake Photo' variant='outlineBorder' size='lg' />
+				{state.imagePreview ? (
+					<Button
+						text='Retake Photo'
+						variant='outlineBorder'
+						size='lg'
+						onClick={retakeImage}
+					/>
+				) : (
+					<Button
+						text='Capture'
+						variant='outlineBorder'
+						size='lg'
+						onClick={capture}
+					/>
+				)}
 
 				<Button
 					text='Next'
