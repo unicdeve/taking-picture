@@ -9,7 +9,7 @@ import dataReducer, { dataInitialState } from './reducer';
 import dataTypes from './types';
 
 // Context
-const DataContext = createContext();
+export const DataContext = createContext();
 
 function DataProvider(props) {
 	const [state, dispatch] = useReducer(dataReducer, dataInitialState);
@@ -35,11 +35,13 @@ function DataProvider(props) {
 		};
 	}, [state, updateFile]);
 
-	return <DataContext.Provider value={value} {...props} />;
+	return (
+		<DataContext.Provider value={value} {...props}>
+			{props.children}
+		</DataContext.Provider>
+	);
 }
 
-const useData = () => useContext(DataContext);
-
-export { DataContext, useData };
+export const useData = () => useContext(DataContext);
 
 export default DataProvider;

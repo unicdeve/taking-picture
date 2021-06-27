@@ -35,7 +35,7 @@ export const Container = styled.div`
 
 	@media (min-width: 768px) {
 		.general {
-			margin-top: unset;
+			margin-top: 1rem;
 
 			.image-preview {
 				width: 400px;
@@ -52,6 +52,8 @@ export const Container = styled.div`
 
 	@media (min-width: 1024px) {
 		.general {
+			margin-top: 2rem;
+
 			.image-preview {
 				width: 500px;
 				height: 470px;
