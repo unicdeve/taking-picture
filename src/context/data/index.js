@@ -9,6 +9,7 @@ import React, {
 import axios from 'axios';
 import dataReducer, { dataInitialState } from './reducer';
 import dataTypes from './types';
+import { api_url } from '../../utils/constants';
 
 const toBase64 = (file) =>
 	new Promise((resolve, reject) => {
@@ -64,21 +65,19 @@ function DataProvider(props) {
 	const uploadImageMB = useCallback(async () => {
 		const base64 = await toBase64(state.file);
 
-		console.log(base64.length);
-
-		// axios
-		// 	.post('/api/image-upload', { file: base64 })
-		// 	.then((res) => {
-		// 		console.log(res.data);
-		// 	})
-		// 	.catch((err) => {
-		// 		console.error('Error uploading image', err);
-		// 	});
+		axios
+			.post(`${api_url}/api/image-upload`, { file: base64 })
+			.then((res) => {
+				console.log(res.data);
+			})
+			.catch((err) => {
+				console.error('Error uploading image', err);
+			});
 	}, [state.file]);
 
 	const uploadImage = useCallback(() => {
 		axios
-			.post('/api/image-upload', { file: state.imagePreview })
+			.post(`${api_url}/api/image-upload`, { file: state.imagePreview })
 			.then((res) => {
 				console.log(res.data);
 			})
