@@ -9,15 +9,20 @@ const videoConstraints = {
 
 export default function DesktopWebcam() {
 	const { webcamRef } = useData();
+	const { state } = useData();
 
 	return (
 		<StyledWebCam>
-			<Webcam
-				audio={false}
-				ref={webcamRef}
-				screenshotFormat='image/jpeg'
-				videoConstraints={videoConstraints}
-			/>
+			{state.imagePreview ? (
+				<img src={state.imagePreview} alt='' />
+			) : (
+				<Webcam
+					audio={false}
+					ref={webcamRef}
+					screenshotFormat='image/jpeg'
+					videoConstraints={videoConstraints}
+				/>
+			)}
 		</StyledWebCam>
 	);
 }

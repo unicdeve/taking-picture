@@ -15,8 +15,8 @@ export default function ImagePreviewContent() {
 	const isMobile = useIsMobile();
 
 	useEffect(() => {
-		if (!state.imagePreview) navigate('/get-started');
-	}, [state.imagePreview]);
+		if (!state.imagePreview && isMobile) navigate('/get-started');
+	}, [state.imagePreview, isMobile]);
 
 	return (
 		<Container>
@@ -33,21 +33,23 @@ export default function ImagePreviewContent() {
 			</div>
 
 			<div className='desktop'>
-				{/* <Button
-					text='Next'
-					variant='outline'
-					size='lg'
-					className='btn'
-					onClick={() => navigate('/image')}
-				/> */}
-
-				<Button
-					text='Capture'
-					variant='outline'
-					size='lg'
-					className='btn'
-					onClick={capture}
-				/>
+				{state.imagePreview ? (
+					<Button
+						text='Next'
+						variant='outline'
+						size='lg'
+						className='btn'
+						onClick={() => navigate('/image')}
+					/>
+				) : (
+					<Button
+						text='Capture'
+						variant='outline'
+						size='lg'
+						className='btn'
+						onClick={capture}
+					/>
+				)}
 			</div>
 
 			<MBContent>

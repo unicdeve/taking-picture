@@ -10,7 +10,7 @@ import { useCamera } from '../../utils/hooks/use-camera';
 
 export default function GetStartedContent() {
 	const isMobile = useIsMobile();
-	const { camRef, takePicture } = useCamera();
+	const { camRef, takePicture, desktopNext } = useCamera();
 
 	return (
 		<Container>
@@ -47,14 +47,14 @@ export default function GetStartedContent() {
 			</div>
 
 			{/* For moble camera */}
-			<PhoneCamera camRef={camRef} />
+			{isMobile && <PhoneCamera camRef={camRef} />}
 
 			<Button
 				text='Take A Photo'
 				variant={isMobile ? 'solid' : 'outline'}
 				size='lg'
 				className='btn'
-				onClick={takePicture}
+				onClick={isMobile ? takePicture : desktopNext}
 			/>
 		</Container>
 	);
