@@ -4,6 +4,7 @@ import React, {
 	useMemo,
 	useContext,
 	useCallback,
+	useRef,
 } from 'react';
 import dataReducer, { dataInitialState } from './reducer';
 import dataTypes from './types';
@@ -13,6 +14,7 @@ export const DataContext = createContext();
 
 function DataProvider(props) {
 	const [state, dispatch] = useReducer(dataReducer, dataInitialState);
+	const webcamRef = useRef(null);
 
 	const updateFile = useCallback((file, cb) => {
 		const imagePreview = URL.createObjectURL(file);
@@ -28,12 +30,26 @@ function DataProvider(props) {
 		cb && cb();
 	}, []);
 
+	const capture = useCallback(() => {
+		console.log(webcamRef.current.getScreenshot());
+
+		dispatch({
+			type: dataTypes.UPDATE_FILE,
+			payload: {
+				file: webcamRef.current.getScreenshot(),
+				imagePreview: webcamRef.current.getScreenshot(),
+			},
+		});
+	}, []);
+
 	const value = useMemo(() => {
 		return {
 			state,
 			updateFile,
+			webcamRef,
+			capture,
 		};
-	}, [state, updateFile]);
+	}, [state, updateFile, capture]);
 
 	return (
 		<DataContext.Provider value={value} {...props}>

@@ -174,6 +174,7 @@ export const StyledRadioInput = styled.div`
 	border-radius: 50%;
 
 	@media (min-width: 768px) {
+		background-color: ${({ selected }) => (selected ? '#000' : '#fff')};
 		width: 29px;
 		height: 29px;
 		border: unset;

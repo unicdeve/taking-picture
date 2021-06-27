@@ -6,10 +6,13 @@ import Button from '../button/button.comp';
 import PhoneCamera from '../phone-camera/phone-camera.comp';
 import { useData } from '../../context/data';
 import { useCamera } from '../../utils/hooks/use-camera';
+import { useIsMobile } from '../../utils/hooks/use-is-mobile';
+import DesktopWebcam from '../desktop-webcam/desktop-webcam.comp';
 
 export default function ImagePreviewContent() {
-	const { state } = useData();
+	const { state, capture } = useData();
 	const { camRef, takePicture } = useCamera();
+	const isMobile = useIsMobile();
 
 	useEffect(() => {
 		if (!state.imagePreview) navigate('/get-started');
@@ -18,19 +21,35 @@ export default function ImagePreviewContent() {
 	return (
 		<Container>
 			<div className='general'>
-				<div className='image-preview'>
-					<img src={state.imagePreview} alt='' />
-				</div>
+				{isMobile ? (
+					<div className='image-preview'>
+						<img src={state.imagePreview} alt='' />
+					</div>
+				) : (
+					// <div className='image-preview'>
+					<DesktopWebcam />
+					// </div>
+				)}
 			</div>
+
 			<div className='desktop'>
-				<Button
+				{/* <Button
 					text='Next'
 					variant='outline'
 					size='lg'
 					className='btn'
 					onClick={() => navigate('/image')}
+				/> */}
+
+				<Button
+					text='Capture'
+					variant='outline'
+					size='lg'
+					className='btn'
+					onClick={capture}
 				/>
 			</div>
+
 			<MBContent>
 				<Button
 					text='Next'
@@ -48,7 +67,7 @@ export default function ImagePreviewContent() {
 					onClick={takePicture}
 				/>
 			</MBContent>
-			<PhoneCamera camRef={camRef} />;
+			<PhoneCamera camRef={camRef} />
 		</Container>
 	);
 }
