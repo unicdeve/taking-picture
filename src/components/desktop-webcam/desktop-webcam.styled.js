@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledWebCam = styled.div`
 	width: 500px;
-	height: 390px;
+	height: auto;
 	border-radius: 23px;
 	overflow: hidden;
 	box-shadow: 0px 0px 207px -18px rgba(255, 255, 255, 0.25);

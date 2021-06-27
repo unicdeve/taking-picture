@@ -31,15 +31,13 @@ export default function ImageContent() {
 	return (
 		<Container>
 			<StyledGeneral>
-				<div className='image-preview'>
-					{isMobile ? (
-						<div className='image-preview'>
-							<img src={state.imagePreview} alt='' />
-						</div>
-					) : (
-						<DesktopWebcam />
-					)}
-				</div>
+				{isMobile ? (
+					<div className='image-preview'>
+						<img src={state.imagePreview} alt='' />
+					</div>
+				) : (
+					<DesktopWebcam />
+				)}
 
 				<StyledActions>
 					<div className='action top-label'>
