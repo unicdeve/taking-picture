@@ -18,7 +18,7 @@ import DesktopWebcam from '../desktop-webcam/desktop-webcam.comp';
 import { useIsMobile } from '../../utils/hooks/use-is-mobile';
 
 export default function ImageContent() {
-	const { state, retakeImage, capture } = useData();
+	const { state, retakeImage, capture, uploadImage } = useData();
 	const { camRef, takePicture } = useCamera();
 	const isMobile = useIsMobile();
 
@@ -91,7 +91,7 @@ export default function ImageContent() {
 					variant='outline'
 					size='lg'
 					className='btn'
-					onClick={() => navigate('/final')}
+					onClick={() => uploadImage()}
 				/>
 			</div>
 			<MBContent>

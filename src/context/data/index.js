@@ -6,6 +6,7 @@ import React, {
 	useCallback,
 	useRef,
 } from 'react';
+import axios from 'axios';
 import dataReducer, { dataInitialState } from './reducer';
 import dataTypes from './types';
 
@@ -50,6 +51,17 @@ function DataProvider(props) {
 		});
 	}, []);
 
+	const uploadImage = useCallback(() => {
+		axios
+			.post('/api/image-upload', { file: state.imagePreview })
+			.then((res) => {
+				console.log(res.data);
+			})
+			.catch((err) => {
+				console.error('Error uploading image', err);
+			});
+	}, [state.imagePreview]);
+
 	const value = useMemo(() => {
 		return {
 			state,
@@ -57,8 +69,9 @@ function DataProvider(props) {
 			webcamRef,
 			capture,
 			retakeImage,
+			uploadImage,
 		};
-	}, [state, updateFile, capture, retakeImage]);
+	}, [state, updateFile, capture, retakeImage, uploadImage]);
 
 	return (
 		<DataContext.Provider value={value} {...props}>
