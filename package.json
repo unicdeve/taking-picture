@@ -9,23 +9,16 @@
 	],
 	"scripts": {
 		"develop": "gatsby develop -H 0.0.0.0",
+		"start": "gatsby develop",
 		"build": "gatsby build",
 		"serve": "gatsby serve",
-		"clean": "gatsby clean",
-		"start": "node server/index.js",
-		"dev": "gatsby build && node server/index.js"
+		"clean": "gatsby clean"
 	},
 	"dependencies": {
-		"axios": "^0.21.1",
 		"babel-plugin-styled-components": "^1.12.0",
-		"cloudinary": "^1.26.1",
-		"dotenv": "^10.0.0",
-		"express": "^4.17.1",
-		"express-async-errors": "^3.1.1",
 		"gatsby": "^3.6.2",
 		"gatsby-plugin-image": "^1.8.0",
 		"gatsby-plugin-manifest": "^3.8.0",
-		"gatsby-plugin-nodejs": "^0.7.0",
 		"gatsby-plugin-sharp": "^3.8.0",
 		"gatsby-plugin-styled-components": "^4.8.0",
 		"gatsby-source-filesystem": "^3.8.0",
