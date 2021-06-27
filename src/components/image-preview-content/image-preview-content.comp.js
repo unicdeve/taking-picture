@@ -46,6 +46,7 @@ export default function ImagePreviewContent() {
 						size='lg'
 						className='btn'
 						onClick={capture}
+						loading={state.uploading}
 					/>
 				)}
 			</div>

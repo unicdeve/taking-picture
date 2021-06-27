@@ -83,6 +83,7 @@ export default function ImageContent() {
 						variant='outlineBorder'
 						size='lg'
 						onClick={capture}
+						loading={state.uploading}
 					/>
 				)}
 
@@ -111,6 +112,7 @@ export default function ImageContent() {
 					size='lg'
 					className='no-bg-btn'
 					onClick={takePicture}
+					loading={state.uploading}
 				/>
 			</MBContent>
 			<PhoneCamera camRef={camRef} />;

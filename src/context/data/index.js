@@ -42,12 +42,18 @@ function DataProvider(props) {
 
 	const capture = useCallback(() => {
 		dispatch({
-			type: dataTypes.UPDATE_FILE,
-			payload: {
-				file: webcamRef.current.getScreenshot(),
-				imagePreview: webcamRef.current.getScreenshot(),
-			},
+			type: dataTypes.UPLOADING,
+			payload: true,
 		});
+		setTimeout(() => {
+			dispatch({
+				type: dataTypes.UPDATE_FILE,
+				payload: {
+					file: webcamRef.current.getScreenshot(),
+					imagePreview: webcamRef.current.getScreenshot(),
+				},
+			});
+		}, 5000);
 	}, []);
 
 	const retakeImage = useCallback(() => {
