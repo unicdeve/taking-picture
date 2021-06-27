@@ -92,6 +92,7 @@ export default function ImageContent() {
 					size='lg'
 					className='btn'
 					onClick={() => uploadImage()}
+					loading={state.uploading}
 				/>
 			</div>
 			<MBContent>
@@ -101,6 +102,7 @@ export default function ImageContent() {
 					size='lg'
 					className='btn'
 					onClick={() => uploadImageMB()}
+					loading={state.uploading}
 				/>
 
 				<Button

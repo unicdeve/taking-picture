@@ -4,6 +4,7 @@ export const dataInitialState = {
 	file: null,
 	imagePreview: null,
 	uploading: false,
+	loading: false,
 };
 
 export default function dataReducer(state = dataInitialState, action) {

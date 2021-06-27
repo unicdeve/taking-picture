@@ -1,4 +1,5 @@
 import React from 'react';
+import LoadingSpinner from '../loading-spinner/loading-spinner.comp';
 import { StyledButton, StyledLink } from './button.styled';
 
 export default function Button({
@@ -7,6 +8,7 @@ export default function Button({
 	variant,
 	className,
 	size,
+	loading,
 	...rest
 }) {
 	if (to)
@@ -18,13 +20,13 @@ export default function Button({
 				size={size}
 				{...rest}
 			>
-				{text}
+				{loading ? <LoadingSpinner /> : text}
 			</StyledLink>
 		);
 
 	return (
 		<StyledButton className={className} variant={variant} size={size} {...rest}>
-			{text}
+			{loading ? <LoadingSpinner /> : text}
 		</StyledButton>
 	);
 }
