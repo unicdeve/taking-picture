@@ -18,7 +18,11 @@ dotenv.config();
 const app = express();
 
 gatsby.prepare({ app }, () => {
-	app.use(express.json());
+	app.use(
+		express.json({
+			limit: '200mb',
+		})
+	);
 
 	app.post('/api/image-upload', async (req, res) => {
 		const file = req.body.file;

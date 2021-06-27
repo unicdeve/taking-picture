@@ -10,6 +10,14 @@ import axios from 'axios';
 import dataReducer, { dataInitialState } from './reducer';
 import dataTypes from './types';
 
+const toBase64 = (file) =>
+	new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = () => resolve(reader.result);
+		reader.onerror = (error) => reject(error);
+	});
+
 // Context
 export const DataContext = createContext();
 
@@ -51,6 +59,23 @@ function DataProvider(props) {
 		});
 	}, []);
 
+	// console.log('image in mb', state);
+
+	const uploadImageMB = useCallback(async () => {
+		const base64 = await toBase64(state.file);
+
+		console.log(base64.length);
+
+		// axios
+		// 	.post('/api/image-upload', { file: base64 })
+		// 	.then((res) => {
+		// 		console.log(res.data);
+		// 	})
+		// 	.catch((err) => {
+		// 		console.error('Error uploading image', err);
+		// 	});
+	}, [state.file]);
+
 	const uploadImage = useCallback(() => {
 		axios
 			.post('/api/image-upload', { file: state.imagePreview })
@@ -70,8 +95,9 @@ function DataProvider(props) {
 			capture,
 			retakeImage,
 			uploadImage,
+			uploadImageMB,
 		};
-	}, [state, updateFile, capture, retakeImage, uploadImage]);
+	}, [state, updateFile, capture, retakeImage, uploadImage, uploadImageMB]);
 
 	return (
 		<DataContext.Provider value={value} {...props}>
