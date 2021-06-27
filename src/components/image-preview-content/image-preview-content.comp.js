@@ -31,6 +31,7 @@ export default function ImagePreviewContent() {
 			</div>
 
 			<div className='desktop'>
+				<p>There will be a 5 second countdown before capturing the image.</p>
 				{state.imagePreview ? (
 					<Button
 						text='Next'

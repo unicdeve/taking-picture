@@ -27,10 +27,6 @@ export const Container = styled.div`
 
 	.desktop {
 		display: none;
-
-		.btn {
-			margin-top: 2.5rem;
-		}
 	}
 
 	@media (min-width: 768px) {
@@ -47,6 +43,14 @@ export const Container = styled.div`
 			display: flex;
 			flex-direction: column;
 			align-items: center;
+
+			.btn {
+				/* margin-top: 2.5rem; */
+			}
+
+			p {
+				margin-top: 2rem;
+			}
 		}
 	}
 
