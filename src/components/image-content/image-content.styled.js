@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getGreenFrameStyles } from '../styled';
 
 export const Container = styled.div`
 	width: 100%;
@@ -56,6 +57,7 @@ export const StyledGeneral = styled.div`
 		background: #ffffff;
 		box-shadow: 0px 0px 46px -8px rgba(0, 0, 0, 0.25);
 		border-radius: 15px;
+		position: relative;
 
 		img {
 			width: 100%;
@@ -63,6 +65,8 @@ export const StyledGeneral = styled.div`
 			border-radius: 15px;
 			object-fit: cover;
 		}
+
+		${getGreenFrameStyles}
 	}
 
 	@media (min-width: 768px) {
